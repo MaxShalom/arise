@@ -1,6 +1,6 @@
-# Social Determinants in Health 
----
-**Goals:** 
+**[Home](https://maxshalom.com/arise/)**
+
+### Goals:
 
 *   to predict heart/stroke problems, they are indicated as variables LAHCA7 and LAHCA8 respectively.
 *   to identify some variables you think would be relevant and trying out some summary using pandas, for example, get the percentage of categorical variables(ethnicity, marital status), average for continuous variables(age, income, etc), or  plotting
@@ -31,7 +31,7 @@ print(persons_data)
     9287    1      NaN         4    2  ...       NaN       NaN       NaN        1
     
     [9288 rows x 602 columns]
-    
+
 
 
 ```
@@ -51,7 +51,7 @@ persons_data.groupby("SEX").count()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -420,7 +420,7 @@ persons_data.groupby("LAHCA7").count()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1041,7 +1041,7 @@ persons_data[["LAHCA7", "LAHCA8"]].describe()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1098,6 +1098,8 @@ persons_data[["LAHCA7", "LAHCA8"]].describe()
   </tbody>
 </table>
 </div>
+
+
 
 
 
@@ -1161,7 +1163,7 @@ print(p)
     33       9         6      4
     34       9         7     10
     35       9         8      7
-    
+
 
 
 ```
@@ -1180,7 +1182,7 @@ pd.crosstab(persons_data.LAHCA7, persons_data.R_MARITL).apply(lambda r: r/r.sum(
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1273,8 +1275,10 @@ pd.crosstab(persons_data.LAHCA7, persons_data.R_MARITL).apply(lambda r: r/r.sum(
 
 
 
+
+
 ```
-# Calculated mean by different groups##
+# Calculated mean by different groups
 persons_data.groupby('LAHCA7')['AGE_P'].mean()
 ```
 
