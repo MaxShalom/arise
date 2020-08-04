@@ -3,7 +3,7 @@ My [NYU ARISE](https://engineering.nyu.edu/research-innovation/k12-stem-educatio
 
 My goal is to use data provided by the NHIS to look at social determinants in the spread of diseases and specifically, how they relate to someone's chances of contracting heart disease or getting a stroke. 
 
-Another goal of mine is to become familiar with Python and the Pandas and NumPy packages to effectively make a summary of the data, such as getting the percentage of categorical variables (ethnicity, marital status), average for continuous variables(age, income, etc.), or plotting the data.
+Another goal of mine is to become familiar with Python and the Pandas and NumPy packages to effectively make a summary of the data, such as getting the percentage of categorical variables (ethnicity, marital status), average for continuous variables(age, income, etc.), or plotting the data with Matplotlib.
 
 ### Abstract 
 Populations in low socioeconomic communities and geographies usually have a higher burden of cardiovascular diseases (CVD). Using data from the national representative surveys we can disentangle the clustering effect of social determinants within individuals and their association with CVD outcomes. Additionally, we can pinpoint at which factors such as education level, poverty, and malnutrition, are most vital to improving upon urgently to have early prevention and reduce the burden of CVDs in the population. The aim, specifically, is to use data provided by the National Health Interview Survey (NHIS) to assess the association between individual and community-level social determinants and CVD, including heart disease and stroke, and use regression and machine learning methods to predict CVD using social determinants. To do this we will become familiar with Python coding, such as Pandas, NumPy and svm in scikit-learn packages to effectively make a summary of the data, such as getting the percentage of categorical variables (ethnicity, marital status), mean for continuous variables (age, income, etc.), plotting the data and make predictions.
@@ -12,8 +12,8 @@ Populations in low socioeconomic communities and geographies usually have a high
 
 Using Jupyter notebooks, I began analyzing data from the NHIS set and used pandas to manipulate it. 
 
-- [Social Determinants in Health](/determinants.md) (still in progress)
-- [Data Table](/chart.md) (still in progress)
+- **[Social Determinants in Health](/determinants.md)** (still in progress)
+- **[Data Table](/chart.md)** (still in progress)
 
 #### About
 Project by [Max Shalom](https://maxshalom.com) <br>
