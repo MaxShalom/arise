@@ -1,3 +1,5 @@
+[Home](https://maxshalom.com/arise/) 
+
 # Data Table
 
 |                                                              | Mentioned Heart Problem (`LAHCA7==1`) (`N=`) | Mentioned Heart Problem (`LAHCA7==2`) (`N=`) | Not Clear (`N=`)                 |
@@ -13,3 +15,7 @@
 | Work full time (`WRKFTALL`)(n,%)                             |                                              |                                              |                                  |
 | Highest Education (`EDUC1`)(n,%): High school and under College, Graduate, and Above |                                              |                                              |                                  |
 
+#### About
+
+[Home](https://maxshalom.com/arise/) <br>Project by [Max Shalom](https://maxshalom.com) <br>
+Source code and data available on the [GitHub Repository](https://github.com/MaxShalom/arise)

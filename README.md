@@ -12,8 +12,8 @@ Populations in low socioeconomic communities and geographies usually have a high
 
 Using Jupyter notebooks, I began analyzing data from the NHIS set and used pandas to manipulate it. 
 
-- **[Social Determinants in Health](/determinants.md)** (still in progress)
-- **[Data Table](/chart.md)** (still in progress)
+- [Social Determinants in Health](/determinants.md) (still in progress)
+- [Data Table](/chart.md) (still in progress)
 
 #### About
 Project by [Max Shalom](https://maxshalom.com) <br>
