@@ -1,7 +1,4 @@
-[Home](https://maxshalom.com/arise/) 
-
 ## Project Code
-
 ### Goals:
 
 *   to predict heart/stroke problems, they are indicated as variables LAHCA7 and LAHCA8 respectively.
@@ -24,6 +21,10 @@ sns.set(style="white")
 sns.set(style="whitegrid", color_codes=True)
 ```
 
+    /usr/local/lib/python3.6/dist-packages/statsmodels/tools/_testing.py:19: FutureWarning: pandas.util.testing is deprecated. Use the functions in the public API at pandas.testing instead.
+      import pandas.util.testing as tm
+    
+
 
 ```
 persons_data = pd.read_csv('https://raw.githubusercontent.com/MaxShalom/arise/master/personsx1.csv', delimiter = ',')
@@ -42,7 +43,7 @@ persons_data.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-    
+
     .dataframe thead th {
         text-align: right;
     }
@@ -582,7 +583,7 @@ persons_data.groupby("SEX").count()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-    
+
     .dataframe thead th {
         text-align: right;
     }
@@ -981,7 +982,7 @@ persons_data.groupby("LAHCA7").count()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-    
+
     .dataframe thead th {
         text-align: right;
     }
@@ -1585,7 +1586,7 @@ persons_data.groupby("LAHCA7").count()
 
 
 
-#### Data.unique `ERROR`
+#### Data.unique 
 
 
 ```
@@ -1599,7 +1600,7 @@ persons_data_sub["LAHCA7"].unique()
     
     See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
       self.obj[item] = s
-
+    
 
 
 
@@ -1629,7 +1630,7 @@ persons_data_sub.groupby('LAHCA7').mean()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-    
+
     .dataframe thead th {
         text-align: right;
     }
@@ -1998,7 +1999,7 @@ persons_data[["LAHCA7", "LAHCA8"]].describe()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-    
+
     .dataframe thead th {
         text-align: right;
     }
@@ -2058,16 +2059,24 @@ persons_data[["LAHCA7", "LAHCA8"]].describe()
 
 
 
-#### Run line magic `ERROR`
+#### Value counts
 
 
 ```
 persons_data["LAHCA7"].value_counts()
 persons_data["LAHCA8"].value_counts()
-get_ipython().run_line_magic('p', '=persons_data.groupby(["LAHCA7", "R_MARITL"]).size().reset_index(name="Count")')
 ```
 
-    UsageError: Line magic function `%p` not found.
+
+
+
+    2    8669
+    1     496
+    7      53
+    9      53
+    8      17
+    Name: LAHCA8, dtype: int64
+
 
 
 #### Marital status for heart diseases
@@ -2123,7 +2132,7 @@ pd.crosstab(persons_data.LAHCA7, persons_data.R_MARITL).apply(lambda r: r/r.sum(
     .dataframe tbody tr th {
         vertical-align: top;
     }
-    
+
     .dataframe thead th {
         text-align: right;
     }
@@ -2215,6 +2224,788 @@ pd.crosstab(persons_data.LAHCA7, persons_data.R_MARITL).apply(lambda r: r/r.sum(
 
 
 
+#### Alcohol abuse data by different disease groups
+
+
+```
+pd.crosstab(persons_data.LAHCA7, persons_data.LAHCA29_).apply(lambda r: r/r.sum(), axis=1)
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>LAHCA29_</th>
+      <th>1</th>
+      <th>2</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+    <tr>
+      <th>LAHCA7</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.002109</td>
+      <td>0.997891</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+#### Health insurance data by different disease groups `<65`
+Under 65 years old
+> 1 - Private <br>
+2 - Medicaid and other public <br>
+3 - Other coverage<br>
+4 - Uninsured<br>
+5 - Don't know 
+
+
+```
+pd.crosstab(persons_data.LAHCA7, persons_data.COVER).apply(lambda r: r/r.sum(), axis=1)
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>COVER</th>
+      <th>1.0</th>
+      <th>2.0</th>
+      <th>3.0</th>
+      <th>4.0</th>
+      <th>5.0</th>
+    </tr>
+    <tr>
+      <th>LAHCA7</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.301932</td>
+      <td>0.391304</td>
+      <td>0.214976</td>
+      <td>0.089372</td>
+      <td>0.002415</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.396811</td>
+      <td>0.338873</td>
+      <td>0.159668</td>
+      <td>0.096789</td>
+      <td>0.007860</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.437500</td>
+      <td>0.281250</td>
+      <td>0.156250</td>
+      <td>0.031250</td>
+      <td>0.093750</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.750000</td>
+      <td>0.166667</td>
+      <td>0.083333</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.076923</td>
+      <td>0.538462</td>
+      <td>0.153846</td>
+      <td>0.153846</td>
+      <td>0.076923</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+#### Health insurance data by different disease groups `>65`
+65 years old and over
+> 1 - Private <br>
+2 - Medicaid and other public <br>
+3 - Other coverage<br>
+4 - Uninsured<br>
+5 - Don't know 
+
+
+```
+pd.crosstab(persons_data.LAHCA7, persons_data.COVER65).apply(lambda r: r/r.sum(), axis=1)
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>COVER65</th>
+      <th>1.0</th>
+      <th>2.0</th>
+      <th>3.0</th>
+      <th>4.0</th>
+      <th>5.0</th>
+      <th>6.0</th>
+      <th>7.0</th>
+    </tr>
+    <tr>
+      <th>LAHCA7</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.359942</td>
+      <td>0.142235</td>
+      <td>0.185776</td>
+      <td>0.175617</td>
+      <td>0.133527</td>
+      <td>0.002903</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.352452</td>
+      <td>0.126905</td>
+      <td>0.226378</td>
+      <td>0.164589</td>
+      <td>0.121917</td>
+      <td>0.005542</td>
+      <td>0.002217</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.523810</td>
+      <td>0.047619</td>
+      <td>0.000000</td>
+      <td>0.238095</td>
+      <td>0.095238</td>
+      <td>0.000000</td>
+      <td>0.095238</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.200000</td>
+      <td>0.000000</td>
+      <td>0.200000</td>
+      <td>0.400000</td>
+      <td>0.200000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.407407</td>
+      <td>0.037037</td>
+      <td>0.148148</td>
+      <td>0.185185</td>
+      <td>0.185185</td>
+      <td>0.000000</td>
+      <td>0.037037</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+#### Private health insurance data by different disease groups 
+Private health insurance recode
+> 1 - Yes, information<br>
+2 - Yes, but no information<br>
+3 - No<br>
+7 - Refused<br>
+8 - Not ascertained<br>
+9 - Don't know<br>
+
+
+```
+pd.crosstab(persons_data.LAHCA7, persons_data.HIKINDNA).apply(lambda r: r/r.sum(), axis=1)
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>HIKINDNA</th>
+      <th>1</th>
+      <th>2</th>
+      <th>7</th>
+      <th>9</th>
+    </tr>
+    <tr>
+      <th>LAHCA7</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.328196</td>
+      <td>0.670898</td>
+      <td>0.000907</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.374969</td>
+      <td>0.619449</td>
+      <td>0.001364</td>
+      <td>0.004217</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.509434</td>
+      <td>0.377358</td>
+      <td>0.075472</td>
+      <td>0.037736</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.588235</td>
+      <td>0.411765</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.264151</td>
+      <td>0.679245</td>
+      <td>0.000000</td>
+      <td>0.056604</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+#### Born in the US data by different disease groups 
+Born in the United States
+> 1 - Yes <br>
+2 - No<br>
+7 - Refused<br>
+8 - Not ascertained<br>
+9 - Don't know 
+
+
+```
+pd.crosstab(persons_data.LAHCA7, persons_data.PLBORN).apply(lambda r: r/r.sum(), axis=1)
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>PLBORN</th>
+      <th>1</th>
+      <th>2</th>
+      <th>7</th>
+      <th>9</th>
+    </tr>
+    <tr>
+      <th>LAHCA7</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.890299</td>
+      <td>0.109701</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.877078</td>
+      <td>0.121806</td>
+      <td>0.000496</td>
+      <td>0.00062</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.943396</td>
+      <td>0.037736</td>
+      <td>0.018868</td>
+      <td>0.00000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.941176</td>
+      <td>0.058824</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.773585</td>
+      <td>0.226415</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+#### Education data by different disease groups 
+Highest education level
+> 00-14 - High School and below<br>15-18 - College<br>19-21 - Graduate and Above
+
+
+```
+pd.crosstab(persons_data.LAHCA7, persons_data.EDUC1).apply(lambda r: r/r.sum(), axis=1)
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>EDUC1</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+      <th>14</th>
+      <th>15</th>
+      <th>16</th>
+      <th>17</th>
+      <th>18</th>
+      <th>19</th>
+      <th>20</th>
+      <th>21</th>
+      <th>97</th>
+      <th>99</th>
+    </tr>
+    <tr>
+      <th>LAHCA7</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.004533</td>
+      <td>0.002720</td>
+      <td>0.001813</td>
+      <td>0.006346</td>
+      <td>0.007253</td>
+      <td>0.00544</td>
+      <td>0.014506</td>
+      <td>0.008160</td>
+      <td>0.033545</td>
+      <td>0.033545</td>
+      <td>0.032638</td>
+      <td>0.038078</td>
+      <td>0.028105</td>
+      <td>0.050771</td>
+      <td>0.265639</td>
+      <td>0.198549</td>
+      <td>0.073436</td>
+      <td>0.034451</td>
+      <td>0.093382</td>
+      <td>0.043518</td>
+      <td>0.009066</td>
+      <td>0.005440</td>
+      <td>0.000000</td>
+      <td>0.009066</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.008683</td>
+      <td>0.001116</td>
+      <td>0.002853</td>
+      <td>0.004341</td>
+      <td>0.003845</td>
+      <td>0.00707</td>
+      <td>0.012280</td>
+      <td>0.007938</td>
+      <td>0.022947</td>
+      <td>0.024312</td>
+      <td>0.030265</td>
+      <td>0.038452</td>
+      <td>0.027164</td>
+      <td>0.043165</td>
+      <td>0.269784</td>
+      <td>0.180848</td>
+      <td>0.076284</td>
+      <td>0.037212</td>
+      <td>0.121558</td>
+      <td>0.046763</td>
+      <td>0.008559</td>
+      <td>0.010419</td>
+      <td>0.003349</td>
+      <td>0.010791</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.018868</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.018868</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.018868</td>
+      <td>0.056604</td>
+      <td>0.000000</td>
+      <td>0.018868</td>
+      <td>0.000000</td>
+      <td>0.226415</td>
+      <td>0.169811</td>
+      <td>0.094340</td>
+      <td>0.037736</td>
+      <td>0.113208</td>
+      <td>0.113208</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.056604</td>
+      <td>0.056604</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.058824</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.117647</td>
+      <td>0.176471</td>
+      <td>0.058824</td>
+      <td>0.117647</td>
+      <td>0.058824</td>
+      <td>0.411765</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.018868</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.018868</td>
+      <td>0.037736</td>
+      <td>0.037736</td>
+      <td>0.037736</td>
+      <td>0.037736</td>
+      <td>0.056604</td>
+      <td>0.283019</td>
+      <td>0.207547</td>
+      <td>0.056604</td>
+      <td>0.000000</td>
+      <td>0.037736</td>
+      <td>0.075472</td>
+      <td>0.037736</td>
+      <td>0.000000</td>
+      <td>0.018868</td>
+      <td>0.037736</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+#### Full-time working data by different disease groups 
+Usually work full time
+> 1 - Yes <br>
+2 - No <br>
+7 - Refused <br>
+8 - Not ascertained <br>
+9 - Don't know <br>
+
+
+```
+pd.crosstab(persons_data.LAHCA7, persons_data.WRKFTALL).apply(lambda r: r/r.sum(), axis=1)
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>WRKFTALL</th>
+      <th>1.0</th>
+      <th>2.0</th>
+      <th>9.0</th>
+    </tr>
+    <tr>
+      <th>LAHCA7</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.115942</td>
+      <td>0.884058</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.131367</td>
+      <td>0.864611</td>
+      <td>0.004021</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.666667</td>
+      <td>0.333333</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.222222</td>
+      <td>0.777778</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 #### Statistical variables of dataset
 
 
@@ -2244,7 +3035,7 @@ print(missing_value_persons_data)
     SEX              SEX              0.0
     WTFA            WTFA              0.0
     LAHCA7        LAHCA7              0.0
-
+    
 
 
 ```
@@ -2267,7 +3058,7 @@ print(result.summary2())
     =================================================================
     Model:              Logit            Pseudo R-squared: 0.036     
     Dependent Variable: LAHCA7           AIC:              6520.4878 
-    Date:               2020-08-04 16:41 BIC:              6605.9656 
+    Date:               2020-08-09 16:10 BIC:              6605.9656 
     No. Observations:   9165             Log-Likelihood:   -3248.2   
     Df Model:           11               LL-Null:          -3369.2   
     Df Residuals:       9153             LLR p-value:      1.3268e-45
@@ -2289,9 +3080,8 @@ print(result.summary2())
     SEX           -0.3917    0.0658  -5.9491  0.0000  -0.5207  -0.2627
     WTFA          -0.0000    0.0000  -0.8577  0.3911  -0.0001   0.0000
     =================================================================
-
-
-​    
+    
+    
 
 #### Logistic regression
 
@@ -2322,7 +3112,7 @@ print('Accuracy of logistic regression classifier on test set: {:.2f}'.format(lo
 ```
 
     Accuracy of logistic regression classifier on test set: 0.89
-
+    
 
 
 ```
@@ -2338,13 +3128,12 @@ print(classification_report(y_test, y_pred))
         accuracy                           0.89       917
        macro avg       0.45      0.50      0.47       917
     weighted avg       0.79      0.89      0.84       917
-
-
-​    
+    
+    
 
     /usr/local/lib/python3.6/dist-packages/sklearn/metrics/_classification.py:1272: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
       _warn_prf(average, modifier, msg_start, len(result))
-
+    
 
 #### Calculated mean by different groups and age
 `LAHCA7`: Persons 18+ years who have at least one limitation due to a heart problem<br> 
@@ -2378,6 +3167,69 @@ persons_data.groupby('LAHCA7')['AGE_P'].mean()
 
 
 
+#### Calculated mean by different incomes
+Total earnings last year
+> 01 - $01-$4,999 <br>
+02 - $5,000-$9,999 <br>
+03 - $10,000-$14,999 <br>
+04 - $15,000-$19,999 <br>
+05 - $20,000-$24,999 <br>
+06 - $25,000-$34,999 <br>
+07 - $35,000-$44,999 <br>
+08 - $45,000-$54,999 <br>
+09 - $55,000-$64,999 <br>
+10 - $65,000-$74,999 <br>
+11 - $75,000 and over <br>
+97 - Refused <br>
+98 - Not ascertained <br>
+99 - Don't know  <br>
+
+
+```
+persons_data.groupby('LAHCA7')['ERNYR_P'].median()
+```
+
+
+
+
+    LAHCA7
+    1     6.0
+    2     6.0
+    7    97.0
+    8     8.0
+    9     6.0
+    Name: ERNYR_P, dtype: float64
+
+
+
+#### Calculated mean by different language levels
+How well English is spoken
+> 1 - Very well <br>
+2 - Well<br>
+3 - Not well<br>
+4 - Not at all<br>
+7 - Refused<br>
+8-  Not ascertained<br>
+9 - Don’t know <br>
+
+
+```
+persons_data.groupby('LAHCA7')['ENGLANG'].median()
+```
+
+
+
+
+    LAHCA7
+    1    1
+    2    1
+    7    1
+    8    1
+    9    1
+    Name: ENGLANG, dtype: int64
+
+
+
 #### Scatterplot by group and compare differences of age
 
 
@@ -2389,7 +3241,7 @@ plt.show()
 ```
 
 
-![png](Social_Determinants_in_Health_files/Social_Determinants_in_Health_31_0.png)
+![png](Social_Determinants_in_Health_files/Social_Determinants_in_Health_49_0.png)
 
 
 #### Histogram of Ages
@@ -2402,21 +3254,16 @@ persons_data['AGE_P'].hist(by=persons_data['LAHCA7'])
 
 
 
-    array([[<matplotlib.axes._subplots.AxesSubplot object at 0x7f635cae7438>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f635cdd4828>],
-           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f635ce33e80>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f635caa5518>],
-           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f635ca53b70>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f635ca11208>]],
+    array([[<matplotlib.axes._subplots.AxesSubplot object at 0x7fc3c65850f0>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7fc3d3e8ee48>],
+           [<matplotlib.axes._subplots.AxesSubplot object at 0x7fc3d3ed4908>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7fc3c6220390>],
+           [<matplotlib.axes._subplots.AxesSubplot object at 0x7fc3c678da90>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7fc3c617f588>]],
           dtype=object)
 
 
 
 
-![png](Social_Determinants_in_Health_files/Social_Determinants_in_Health_33_1.png)
-
-#### About
-
-[Home](https://maxshalom.com/arise/) <br>Project by [Max Shalom](https://maxshalom.com) <br>
-Source code and data available on the [GitHub Repository](https://github.com/MaxShalom/arise)
+![png](Social_Determinants_in_Health_files/Social_Determinants_in_Health_51_1.png)
 
