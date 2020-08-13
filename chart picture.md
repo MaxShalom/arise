@@ -1,17 +1,3 @@
-[Home](https://maxshalom.com/arise/) 
-
-# Data Table
-
-`LAHCA7`: Persons 18+ years who have at least one limitation due to a heart problem
-
-Heart problem causes limitation:
-
-> 1 - Mentioned <br>
-> 2 - Not mentioned <br>
-> 9 - Don't know
-
-<br>
-
 |                                                              | Mentioned Heart Problem (`LAHCA7==1`) (`N=`) | Did Not Mention Heart Problem (`LAHCA7==2`) (`N=`) | Not Clear/Don't Know (`N=`)               |
 | ------------------------------------------------------------ | -------------------------------------------- | -------------------------------------------------- | ----------------------------------------- |
 | Age (`AGE_P`) (mean, median)                                 | 67.62, 69                                    | 60.27, 62                                          | 62.06, 65                                 |
@@ -25,8 +11,3 @@ Heart problem causes limitation:
 | How well is English (`ENGLANG`)(median)                      | Very Well                                    | Very Well                                          | Very Well                                 |
 | Work full time (`WRKFTALL`)(n,%): Yes, No, Don't Know        | 11.6%, 88.4%,                                | 13.1%, 86.7%, 0.1%                                 | 22.2%, 77.7%                              |
 | Highest Education (`EDUC1`)(n,%): High school and under College, Graduate, and Above | 26.7%, 39.9%, 44.9%                          | 23.4%, 41.6%, 48.7%                                | 53%, 39.9%, 10.5%                         |
-
-#### About
-
-[Home](https://maxshalom.com/arise/) <br>Project by [Max Shalom](https://maxshalom.com) <br>
-Source code and data available on the [GitHub Repository](https://github.com/MaxShalom/arise)
