@@ -18,8 +18,8 @@ Download: [PDF](https://maxshalom.com/arise/poster/poster.pdf) | [PNG](https://m
 
 Using Jupyter notebooks, I began analyzing data from the NHIS set and used pandas to manipulate it. 
 
-- [Social Determinants in Health](/determinants.md) (still in progress)
-- [Data Table](/chart.md) (still in progress)
+- [Social Determinants in Health](/determinants.md) 
+- [Data Table](/chart.md) 
 
 #### About
 Project by [Max Shalom](https://maxshalom.com) <br>
