@@ -24,3 +24,5 @@ Using Jupyter notebooks, I began analyzing data from the NHIS set and used panda
 #### About
 Project by [Max Shalom](https://maxshalom.com) <br>
 Source code and data available on the [GitHub Repository](https://github.com/MaxShalom/arise)
+
+[Home](https://maxshalom.com/arise/) | [Notebook](https://maxshalom.com/arise/determinants.html) | [Data Table](#) | [Poster](https://maxshalom.com/arise#poster)

@@ -1,4 +1,4 @@
-[Home](https://maxshalom.com/arise/) 
+[Home](https://maxshalom.com/arise/) | [Notebook](https://maxshalom.com/arise/determinants.html) | [Data Table](#) | [Poster](https://maxshalom.com/arise#poster)
 
 # Data Table
 
@@ -28,5 +28,5 @@ Heart problem causes limitation:
 
 #### About
 
-[Home](https://maxshalom.com/arise/) <br>Project by [Max Shalom](https://maxshalom.com) <br>
+Project by [Max Shalom](https://maxshalom.com) <br>
 Source code and data available on the [GitHub Repository](https://github.com/MaxShalom/arise)

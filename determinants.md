@@ -1,4 +1,7 @@
+[Home](https://maxshalom.com/arise/) | [Notebook](https://maxshalom.com/arise/determinants.html) | [Data Table](#) | [Poster](https://maxshalom.com/arise#poster)
+
 ## Project Code
+
 ### Goals:
 
 *   to predict heart/stroke problems, they are indicated as variables LAHCA7 and LAHCA8 respectively.
@@ -23,7 +26,7 @@ sns.set(style="whitegrid", color_codes=True)
 
     /usr/local/lib/python3.6/dist-packages/statsmodels/tools/_testing.py:19: FutureWarning: pandas.util.testing is deprecated. Use the functions in the public API at pandas.testing instead.
       import pandas.util.testing as tm
-    
+
 
 
 ```
@@ -43,7 +46,7 @@ persons_data.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -583,7 +586,7 @@ persons_data.groupby("SEX").count()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -982,7 +985,7 @@ persons_data.groupby("LAHCA7").count()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1600,7 +1603,7 @@ persons_data_sub["LAHCA7"].unique()
     
     See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
       self.obj[item] = s
-    
+
 
 
 
@@ -1630,7 +1633,7 @@ persons_data_sub.groupby('LAHCA7').mean()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1999,7 +2002,7 @@ persons_data[["LAHCA7", "LAHCA8"]].describe()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -2132,7 +2135,7 @@ pd.crosstab(persons_data.LAHCA7, persons_data.R_MARITL).apply(lambda r: r/r.sum(
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -2243,7 +2246,7 @@ pd.crosstab(persons_data.LAHCA7, persons_data.LAHCA29_).apply(lambda r: r/r.sum(
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -2339,7 +2342,7 @@ pd.crosstab(persons_data.LAHCA7, persons_data.COVER).apply(lambda r: r/r.sum(), 
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -2435,7 +2438,7 @@ pd.crosstab(persons_data.LAHCA7, persons_data.COVER65).apply(lambda r: r/r.sum()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -2546,7 +2549,7 @@ pd.crosstab(persons_data.LAHCA7, persons_data.HIKINDNA).apply(lambda r: r/r.sum(
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -2635,7 +2638,7 @@ pd.crosstab(persons_data.LAHCA7, persons_data.PLBORN).apply(lambda r: r/r.sum(),
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -2720,7 +2723,7 @@ pd.crosstab(persons_data.LAHCA7, persons_data.EDUC1).apply(lambda r: r/r.sum(), 
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -2949,7 +2952,7 @@ pd.crosstab(persons_data.LAHCA7, persons_data.WRKFTALL).apply(lambda r: r/r.sum(
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -3035,7 +3038,7 @@ print(missing_value_persons_data)
     SEX              SEX              0.0
     WTFA            WTFA              0.0
     LAHCA7        LAHCA7              0.0
-    
+
 
 
 ```
@@ -3080,8 +3083,9 @@ print(result.summary2())
     SEX           -0.3917    0.0658  -5.9491  0.0000  -0.5207  -0.2627
     WTFA          -0.0000    0.0000  -0.8577  0.3911  -0.0001   0.0000
     =================================================================
-    
-    
+
+
+​    
 
 #### Logistic regression
 
@@ -3112,7 +3116,7 @@ print('Accuracy of logistic regression classifier on test set: {:.2f}'.format(lo
 ```
 
     Accuracy of logistic regression classifier on test set: 0.89
-    
+
 
 
 ```
@@ -3128,12 +3132,13 @@ print(classification_report(y_test, y_pred))
         accuracy                           0.89       917
        macro avg       0.45      0.50      0.47       917
     weighted avg       0.79      0.89      0.84       917
-    
-    
+
+
+​    
 
     /usr/local/lib/python3.6/dist-packages/sklearn/metrics/_classification.py:1272: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
       _warn_prf(average, modifier, msg_start, len(result))
-    
+
 
 #### Calculated mean by different groups and age
 `LAHCA7`: Persons 18+ years who have at least one limitation due to a heart problem<br> 
@@ -3267,3 +3272,9 @@ persons_data['AGE_P'].hist(by=persons_data['LAHCA7'])
 
 ![png](Social_Determinants_in_Health_files/Social_Determinants_in_Health_51_1.png)
 
+#### About
+
+Project by [Max Shalom](https://maxshalom.com) <br>
+Source code and data available on the [GitHub Repository](https://github.com/MaxShalom/arise)
+
+[Home](https://maxshalom.com/arise/) | [Notebook](https://maxshalom.com/arise/determinants.html) | [Data Table](#) | [Poster](https://maxshalom.com/arise#poster)
