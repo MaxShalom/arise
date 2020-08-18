@@ -1,4 +1,4 @@
-[Home](https://maxshalom.com/arise/) | [Notebook](https://maxshalom.com/arise/determinants.html) | [Data Table](#) | [Poster](https://maxshalom.com/arise#poster)
+[Home](https://maxshalom.com/arise/) | [Notebook](https://maxshalom.com/arise/determinants.html) | [Data Table](https://maxshalom.com/arise/chart.html) | [Poster](https://maxshalom.com/arise#poster)
 
 ## Project Code
 
@@ -3277,4 +3277,4 @@ persons_data['AGE_P'].hist(by=persons_data['LAHCA7'])
 Project by [Max Shalom](https://maxshalom.com) <br>
 Source code and data available on the [GitHub Repository](https://github.com/MaxShalom/arise)
 
-[Home](https://maxshalom.com/arise/) | [Notebook](https://maxshalom.com/arise/determinants.html) | [Data Table](#) | [Poster](https://maxshalom.com/arise#poster)
+[Home](https://maxshalom.com/arise/) | [Notebook](https://maxshalom.com/arise/determinants.html) | [Data Table](https://maxshalom.com/arise/chart.html) | [Poster](https://maxshalom.com/arise#poster)

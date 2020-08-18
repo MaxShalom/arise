@@ -1,4 +1,4 @@
-[Home](https://maxshalom.com/arise/) | [Notebook](https://maxshalom.com/arise/determinants.html) | [Data Table](#) | [Poster](https://maxshalom.com/arise#poster)
+[Home](https://maxshalom.com/arise/) | [Notebook](https://maxshalom.com/arise/determinants.html) | [Data Table](https://maxshalom.com/arise/chart.html) | [Poster](https://maxshalom.com/arise#poster)
 
 # Data Table
 
